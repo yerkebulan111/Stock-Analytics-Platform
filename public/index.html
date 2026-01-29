@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Analytics Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Stock Market Analytics Platform</h1>
+            <p>Analyze stock market time-series data with interactive visualizations</p>
+        </header>
+
+        <main>
+            
+            <section class="control-panel">
+                <h2>Data Filters</h2>
+                
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label for="company-select">Companies (max 5):</label>
+                        <div id="selected-companies-chips" class="selected-chips"></div>
+                        <select id="company-select" multiple size="6">
+                            <option value="">Loading companies...</option>
+                        </select>
+
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="field-select">Field to Analyze:</label>
+                        <select id="field-select">
+                            <option value="Close">Close Price</option>
+                            <option value="Open">Open Price</option>
+                            <option value="High">High Price</option>
+                            <option value="Low">Low Price</option>
+                            <option value="Volume">Volume</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="start-date">Start Date:</label>
+                        <input type="date" id="start-date" value="2023-01-01">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="end-date">End Date:</label>
+                        <input type="date" id="end-date" value="2023-11-29">
+                    </div>
+                </div>
+
+                <p>Data Range: 2018-11-29 to 2023-11-29</p>
+
+                <div class="button-group">
+                    <button id="fetch-data-btn" class="btn btn-primary">Visualize Data</button>
+                    <button id="fetch-metrics-btn" class="btn btn-secondary">Get Metrics</button>
+                </div>
+            </section>
+
+            
+            <section class="metrics-section" id="metrics-section" style="display: none;">
+                <h2>Statistical Metrics</h2>
+                <div id="metrics-container">
+                    
+                </div>
+            </section>
+
+            
+            <section class="chart-section" id="chart-section" style="display: none;">
+                <h2>Time-Series Visualization</h2>
+                <div class="chart-container">
+                    <canvas id="dataChart"></canvas>
+                </div>
+                <div id="chart-info" class="chart-info"></div>
+            </section>
+
+            
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Loading data...</p>
+            </div>
+
+            
+            <div id="error-message" class="error-message" style="display: none;"></div>
+        </main>
+
+        <footer>
+            <p>Stock Market Data Analytics Platform | Yerkebulan Abdissattar</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
